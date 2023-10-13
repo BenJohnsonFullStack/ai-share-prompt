@@ -9,6 +9,8 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 const Nav = () => {
   const iseUserLoggedIn = true;
 
+  const [toggleDropdown, setToggleDropdown] = useState(false);
+
   /* Sign in using Google/Next-Auth */
   const [providers, setProviders] = useState(null);
 
@@ -53,7 +55,7 @@ const Nav = () => {
                 src="/assets/images/logo.svg"
                 width={37}
                 height={37}
-                className="rounded-full"
+                className="rounded-full cursor-pointer"
                 alt="profile"
               />
             </Link>
@@ -82,10 +84,22 @@ const Nav = () => {
               src="/assets/images/logo.svg"
               width={37}
               height={37}
-              className="rounded-full"
+              className="rounded-full cursor-pointer"
               alt="profile"
-              onClick={() => {}}
+              onClick={() => setToggleDropdown((prev) => !prev)} // recommended alternative to (!toggleDropdown)
             />
+
+            {toggleDropdown && (
+              <div className="dropdown">
+                <Link
+                  href="/profile"
+                  className="dropdown_link"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  My Profile
+                </Link>
+              </div>
+            )}
           </div>
         ) : (
           <>
