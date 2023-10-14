@@ -10,14 +10,14 @@ const MyProfile = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
-  const [myPosts, setMyPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch(`/api/users/${session?.user.id}/posts`);
       const data = await response.json();
 
-      setMyPosts(data);
+      setPosts(data);
     };
 
     if (session?.user.id) {
@@ -40,9 +40,9 @@ const MyProfile = () => {
           method: "DELETE",
         });
 
-        const filteredPosts = myPosts.filter((p) => p._id !== post._id);
+        const filteredPosts = posts.filter((p) => p._id !== post._id);
 
-        setMyPosts(filteredPosts);
+        setPosts(filteredPosts);
       } catch (err) {
         console.log(err);
       }
@@ -53,7 +53,7 @@ const MyProfile = () => {
     <Profile
       name="My"
       desc="Welcome to your personalized profile page."
-      data={myPosts}
+      data={posts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
     />
