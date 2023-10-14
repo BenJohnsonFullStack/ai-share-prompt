@@ -37,3 +37,19 @@ export const PATCH = async (req, { params }) => {
     return new Response("Failed to update prompt", { status: 500 });
   }
 };
+
+export const DELETE = async (req, { params }) => {
+  try {
+    await connectToDB();
+
+    const deletedPrompt = Prompt.findByIdAndRemove(params.id);
+
+    if (!deletedPrompt) {
+      return new Response("Prompt not found", { status: 404 });
+    }
+
+    return new Response(JSON.stringify(deletedPrompt), { status: 200 });
+  } catch (err) {
+    return new Response("Failed to delete prompt", { status: 500 });
+  }
+};
