@@ -57,9 +57,9 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
           >
             {submitting && type === "Create"
-              ? "Creating"
+              ? "Creating..."
               : submitting && type === "Edit"
-              ? "Editing"
+              ? "Editing..."
               : type}
           </button>
         </div>
