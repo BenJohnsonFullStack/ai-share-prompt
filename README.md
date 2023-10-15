@@ -5,8 +5,9 @@
 - Search by Username
 - Search by Tag
 - Search by prompt text content
-  [] Implement Clickable Tags (tap into Search by Tag Logic)
-  [] Implement Clickable Profiles that show other users
+
+[] Implement Clickable Tags (tap into Search by Tag Logic)
+[] Implement Clickable Profiles that show other users
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
