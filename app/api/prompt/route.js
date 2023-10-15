@@ -5,7 +5,10 @@ export const GET = async (req, res) => {
   try {
     await connectToDB();
 
-    const prompts = await Prompt.find({}).populate("creator", "image");
+    const prompts = await Prompt.find({}).populate("creator", [
+      "image",
+      "username",
+    ]);
 
     return new Response(JSON.stringify(prompts), { status: 200 });
   } catch (err) {
